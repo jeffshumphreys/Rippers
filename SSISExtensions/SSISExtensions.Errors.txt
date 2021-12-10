@@ -1,0 +1,80 @@
+﻿Error in Microsoft.SqlServer.Dts.Runtime.Package/ : Cannot create a task from XML for task "Display Connection Info", type "Microsoft.ScriptTask" due to error 0x80131040 "".
+	To avoid the problem before it happens, make sure all shared assemblies that you're using in your updated ClickOnce application have a new assembly version.
+	If the problem has already happened, then you need to clear online cache by running mage.exe -cc, uninstall all versions of installed applications that might have a strong named assembly with the same version, and reinstall the application.
+	Please refer to The located assembly's manifest definition doesn't match the assembly reference.
+	      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+
+ents events)
+   at Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask.LoadFromXML(XmlElement elemProj, IDTSInfoEvents events)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Microsoft.VisualStudio.Tools.Applications, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/Rippers/RipSSIS/bin/Debug/
+LOG: Initial PrivatePath = NULL
+Calling assembly : Microsoft.SqlServer.IntegrationServices.VSTA.VSTA14, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\Rippers\RipSSIS\bin\Debug\RipSSIS.exe.Config
+LOG: Using host configuration file:
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Microsoft.VisualStudio.Tools.Applications, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+'RipSSIS.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'D:\Rippers\RipSSIS\bin\Debug\RipSSIS.exe'. Symbols loaded.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'D:\Rippers\RipSSIS\bin\Debug\CommandLine.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'D:\Rippers\RipSSIS\bin\Debug\ExtensionMethods.dll'. Symbols loaded.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.SqlServer.DTSRuntimeWrap\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.SqlServer.SQLTask\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SQLTask.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'D:\Rippers\RipSSIS\bin\Debug\SSISExtensions.dll'. Symbols loaded.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.ScriptTask\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ScriptTask.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.DTSPipelineWrap\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSPipelineWrap.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\PrivateAssemblies\Runtime\Microsoft.VisualStudio.Debugger.Runtime.Desktop.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\CustomMarshalers\v4.0_4.0.0.0__b03f5f7f11d50a3a\CustomMarshalers.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.PackageFormatUpdate\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.PackageFormatUpdate.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.Diagnostics.STrace\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Diagnostics.STrace.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization.Formatters.Soap\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Serialization.Formatters.Soap.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.PipelineXML\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.PipelineXML.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.SqlTDiagM\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SqlTDiagM.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.SqlServer.Msxml6_interop\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Msxml6_interop.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.DtsMsg\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DtsMsg.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+-- Good load no script
+'RipSSIS.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'D:\Rippers\RipSSIS\bin\Debug\RipSSIS.exe'. Symbols loaded.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'D:\Rippers\RipSSIS\bin\Debug\CommandLine.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'D:\Rippers\RipSSIS\bin\Debug\ExtensionMethods.dll'. Symbols loaded.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.SqlServer.DTSRuntimeWrap\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.SqlServer.SQLTask\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SQLTask.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'D:\Rippers\RipSSIS\bin\Debug\SSISExtensions.dll'. Symbols loaded.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.ScriptTask\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ScriptTask.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.DTSPipelineWrap\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSPipelineWrap.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\CustomMarshalers\v4.0_4.0.0.0__b03f5f7f11d50a3a\CustomMarshalers.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\PrivateAssemblies\Runtime\Microsoft.VisualStudio.Debugger.Runtime.Desktop.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.PackageFormatUpdate\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.PackageFormatUpdate.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.Diagnostics.STrace\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Diagnostics.STrace.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.PipelineXML\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.PipelineXML.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.SqlTDiagM\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.SqlTDiagM.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.SqlServer.Msxml6_interop\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Msxml6_interop.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'RipSSIS.exe' (CLR v4.0.30319: RipSSIS.exe): Loaded 'C:\windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.SqlServer.DtsMsg\v4.0_15.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DtsMsg.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+
+===================================================================================================================================================================================================
+Error in Microsoft.SqlServer.Dts.Runtime.TaskHost/ : Failed to load task "Display Connection Info", type "". The contact information for this task is "".
+
+Error in Microsoft.SqlServer.Dts.Runtime.Package/ : The connection manager "SSISConfiguration" will not acquire a connection because the package OfflineMode property is TRUE. When the OfflineMode is TRUE, connections cannot be acquired.
+
+Error in Microsoft.SqlServer.Dts.Runtime.Package/ : The connection manager "SSISConfiguration" will not acquire a connection because the package OfflineMode property is TRUE. When the OfflineMode is TRUE, connections cannot be acquired.
+
+Error in Microsoft.SqlServer.Dts.Runtime.Package/ : The connection manager "SSISConfiguration" will not acquire a connection because the package OfflineMode property is TRUE. When the OfflineMode is TRUE, connections cannot be acquired.

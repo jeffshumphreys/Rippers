@@ -1,0 +1,2625 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/3/2006 1:21:18 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BOI05PC030"
+  DTS:CreatorName="NA\howertob"
+  DTS:Description="Refresh Location Dimension"
+  DTS:DTSID="{894AF692-3E44-4DA2-8492-CCA697F847E8}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3436.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_Location_Dimension"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{CF301B08-8F95-43DC-9932-D25737AEB106}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SGS.Agvance.SimplotETL]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FBF19983-371B-436D-8590-A78A8179B3A0}"
+      DTS:ObjectName="SGS.Agvance.SimplotETL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=occ00db004;Initial Catalog=SimplotETL;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SGS.EDW.SGSDM]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{69F994DA-392E-4A1B-AA8C-7355A488866C}"
+      DTS:ObjectName="SGS.EDW.SGSDM">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=occ00dv002;Initial Catalog=SGSDM;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSISConfiguration]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FA64B44B-3002-45A6-9007-DCCE221BCB06}"
+      DTS:ObjectName="SSISConfiguration">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Initial Catalog=SSIS;&#xA;&#x9;Data Source=occ00dv002;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="SSISCONFIG"
+      DTS:ConfigurationType="5"
+      DTS:CreationName=""
+      DTS:DTSID="{6D939228-4D6C-493D-8CA5-A120DE59473F}"
+      DTS:ObjectName="SSISConfig" />
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;SSISConfiguration&quot;;&quot;[dbo].[SSISConfigurations]&quot;;&quot;SGS.Agvance.SimplotETL&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{2B5BC1A5-AD1F-4798-82A2-9152B47303F2}"
+      DTS:ObjectName="SGS_Agvance_SimplotETL" />
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;SSISConfiguration&quot;;&quot;[dbo].[SSISConfigurations]&quot;;&quot;SGS.EDW.SGSDM&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{430EDD39-E712-4857-BC98-A2718A0B7E4A}"
+      DTS:ObjectName="SGS_EDW_SGSDM" />
+  </DTS:Configurations>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="SSISConfiguration"
+      DTS:CreationName="DTS.LogProviderSQLServer.3"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{F6CB9FFE-ADEA-4F4B-A2A9-477EBB33BCE3}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">18,7,OnError,19,OnExecStatusChanged,13,OnInformation,25,OnPipelinePostEndOfRowset,25,OnPipelinePostPrimeOutput,24,OnPipelinePreEndOfRowset,24,OnPipelinePrePrimeOutput,18,OnPipelineRowsSent,13,OnPostExecute,14,OnPostValidate,12,OnPreExecute,13,OnPreValidate,10,OnProgress,13,OnQueryCancel,12,OnTaskFailed,22,OnVariableValueChanged,9,OnWarning,10,Diagnostic</DTS:Property>
+    <DTS:Property
+      DTS:EventName="Diagnostic"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnExecStatusChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostPrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePreEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePrePrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnProgress"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnQueryCancel"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{F6CB9FFE-ADEA-4F4B-A2A9-477EBB33BCE3}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Compile GL Details"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DTSID="{470062E0-48CA-48A4-BE13-A7A8C128FC6A}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Compile GL Details">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">22,7,OnError,19,OnExecStatusChanged,13,OnInformation,25,OnPipelinePostEndOfRowset,25,OnPipelinePostPrimeOutput,24,OnPipelinePreEndOfRowset,24,OnPipelinePrePrimeOutput,18,OnPipelineRowsSent,13,OnPostExecute,14,OnPostValidate,12,OnPreExecute,13,OnPreValidate,10,OnProgress,13,OnQueryCancel,12,OnTaskFailed,22,OnVariableValueChanged,9,OnWarning,16,BufferSizeTuning,18,PipelineBufferLeak,21,PipelineExecutionPlan,22,PipelineExecutionTrees,22,PipelineInitialization</DTS:Property>
+        <DTS:Property
+          DTS:EventName="BufferSizeTuning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPipelinePostEndOfRowset"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPipelinePostPrimeOutput"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPipelinePreEndOfRowset"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPipelinePrePrimeOutput"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPipelineRowsSent"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="PipelineBufferLeak"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="PipelineExecutionPlan"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="PipelineExecutionTrees"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="PipelineInitialization"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{F6CB9FFE-ADEA-4F4B-A2A9-477EBB33BCE3}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\Compile GL Details\c_Agvance_GL_Detail"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="c_Agvance_GL_Detail"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[c_Agvance_GL_Detail]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Compile GL Details\c_Agvance_GL_Detail.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SGS.EDW.SGSDM]"
+                  connectionManagerRefId="Package.ConnectionManagers[SGS.EDW.SGSDM]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Header_ID]"
+                      cachedDataType="i4"
+                      cachedName="Header_ID"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Header_ID]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Header_ID]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Header_JENum]"
+                      cachedDataType="i4"
+                      cachedName="Header_JENum"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Header_JENum]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Header_JENum]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[reference]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="reference"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[reference]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[reference]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[custid]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="custid"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[custid]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[custid]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[payid]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="payid"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[payid]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[payid]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[source]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="source"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[source]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[source]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[username]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="username"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[username]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[username]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[WindowsLoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WindowsLoginID"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[WindowsLoginID]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[WindowsLoginID]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[splitid]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="splitid"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[splitid]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[splitid]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Split_Description]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Split_Description"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Split_Description]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Split_Description]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[totamt]"
+                      cachedDataType="r8"
+                      cachedName="totamt"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[totamt]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[totamt]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[numdebs]"
+                      cachedDataType="i2"
+                      cachedName="numdebs"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[numdebs]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[numdebs]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[numcreds]"
+                      cachedDataType="i2"
+                      cachedName="numcreds"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[numcreds]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[numcreds]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[FiscalMonth]"
+                      cachedDataType="i2"
+                      cachedName="FiscalMonth"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[FiscalMonth]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[FiscalMonth]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[1099AmtPaid]"
+                      cachedDataType="r8"
+                      cachedName="1099AmtPaid"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[1099AmtPaid]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[1099AmtPaid]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[TranDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TranDate"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[TranDate]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[TranDate]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[TranTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TranTime"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[TranTime]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[TranTime]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[ReverseByJENum]"
+                      cachedDataType="i4"
+                      cachedName="ReverseByJENum"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[ReverseByJENum]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReverseByJENum]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[ReversalOfJENum]"
+                      cachedDataType="i4"
+                      cachedName="ReversalOfJENum"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[ReversalOfJENum]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReversalOfJENum]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[postcur]"
+                      cachedDataType="bool"
+                      cachedName="postcur"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[postcur]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[postcur]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Detail_ID]"
+                      cachedDataType="i4"
+                      cachedName="Detail_ID"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Detail_ID]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Detail_ID]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[lineitem]"
+                      cachedDataType="i2"
+                      cachedName="lineitem"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[lineitem]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[lineitem]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[GL_Action]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="GL_Action"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[GL_Action]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GL_Action]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Normal_Account_Sign]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Normal_Account_Sign"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Normal_Account_Sign]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Normal_Account_Sign]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[GL_Category]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="GL_Category"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[GL_Category]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GL_Category]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[acctid]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="acctid"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[acctid]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[acctid]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Recorded_Amount]"
+                      cachedDataType="r8"
+                      cachedName="Recorded_Amount"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Recorded_Amount]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Recorded_Amount]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Ledger_Debit_Credit]"
+                      cachedDataType="r8"
+                      cachedName="Ledger_Debit_Credit"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Ledger_Debit_Credit]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Ledger_Debit_Credit]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Normalized_Amount]"
+                      cachedDataType="r8"
+                      cachedName="Normalized_Amount"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Normalized_Amount]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Normalized_Amount]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[ReconYN]"
+                      cachedDataType="bool"
+                      cachedName="ReconYN"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[ReconYN]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReconYN]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Comment]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Comment"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Comment]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[Deposited]"
+                      cachedDataType="bool"
+                      cachedName="Deposited"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Deposited]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Deposited]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[GrainCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="GrainCode"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[GrainCode]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GrainCode]" />
+                    <inputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].Columns[AttributeValue]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="AttributeValue"
+                      externalMetadataColumnId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[AttributeValue]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[AttributeValue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Header_ID]"
+                      dataType="i4"
+                      name="Header_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Header_JENum]"
+                      dataType="i4"
+                      name="Header_JENum" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      dataType="dbTimeStamp"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="1"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[reference]"
+                      dataType="wstr"
+                      length="25"
+                      name="reference" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[custid]"
+                      dataType="wstr"
+                      length="6"
+                      name="custid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[payid]"
+                      dataType="wstr"
+                      length="10"
+                      name="payid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[source]"
+                      dataType="wstr"
+                      length="10"
+                      name="source" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[username]"
+                      dataType="wstr"
+                      length="20"
+                      name="username" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[WindowsLoginID]"
+                      dataType="wstr"
+                      length="50"
+                      name="WindowsLoginID" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[splitid]"
+                      dataType="wstr"
+                      length="10"
+                      name="splitid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Split_Description]"
+                      dataType="wstr"
+                      length="50"
+                      name="Split_Description" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[totamt]"
+                      dataType="r8"
+                      name="totamt" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[numdebs]"
+                      dataType="i2"
+                      name="numdebs" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[numcreds]"
+                      dataType="i2"
+                      name="numcreds" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[FiscalMonth]"
+                      dataType="i2"
+                      name="FiscalMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[1099AmtPaid]"
+                      dataType="r8"
+                      name="1099AmtPaid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[TranDate]"
+                      dataType="dbTimeStamp"
+                      name="TranDate" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[TranTime]"
+                      dataType="dbTimeStamp"
+                      name="TranTime" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[ReverseByJENum]"
+                      dataType="i4"
+                      name="ReverseByJENum" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[ReversalOfJENum]"
+                      dataType="i4"
+                      name="ReversalOfJENum" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[postcur]"
+                      dataType="bool"
+                      name="postcur" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Detail_ID]"
+                      dataType="i4"
+                      name="Detail_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[lineitem]"
+                      dataType="i2"
+                      name="lineitem" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[GL_Action]"
+                      dataType="wstr"
+                      length="1"
+                      name="GL_Action" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Normal_Account_Sign]"
+                      dataType="wstr"
+                      length="1"
+                      name="Normal_Account_Sign" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[GL_Category]"
+                      dataType="wstr"
+                      length="20"
+                      name="GL_Category" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[acctid]"
+                      dataType="wstr"
+                      length="10"
+                      name="acctid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Recorded_Amount]"
+                      dataType="r8"
+                      name="Recorded_Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Ledger_Debit_Credit]"
+                      dataType="r8"
+                      name="Ledger_Debit_Credit" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Normalized_Amount]"
+                      dataType="r8"
+                      name="Normalized_Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[ReconYN]"
+                      dataType="bool"
+                      name="ReconYN" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                      dataType="wstr"
+                      length="40"
+                      name="Comment" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[Deposited]"
+                      dataType="bool"
+                      name="Deposited" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[GrainCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="GrainCode" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input].ExternalColumns[AttributeValue]"
+                      dataType="wstr"
+                      length="60"
+                      name="AttributeValue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Compile GL Details\c_Agvance_GL_Detail.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\c_Agvance_GL_Detail.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\c_Agvance_GL_Detail.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\c_Agvance_GL_Detail.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Compile GL Details\GL Query"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="GL Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT H.[UniqueID] as Header_ID
+      ,H.[jenum] as Header_JENum
+      ,H.[date]
+      ,H.[type]
+      ,H.[reference]
+      ,H.[custid]
+      ,H.[payid]
+      ,H.[source]
+      ,H.[username]
+	  ,U.WindowsLoginID
+      ,H.[description]
+      ,H.[splitid]
+	  ,S.[desc] as Split_Description
+      ,H.[totamt]
+      ,H.[numdebs]
+      ,H.[numcreds]
+      ,H.[FiscalMonth]
+      ,H.[1099AmtPaid]
+      ,H.[TranDate]
+      ,H.[TranTime]
+      ,H.[ReverseByJENum]
+      ,H.[ReversalOfJENum]
+      ,H.[postcur]
+      ,D.[UniqueID] as Detail_ID
+      ,D.[lineitem]
+      ,D.[debcred] as GL_Action
+	  ,C.[debcred] as Normal_Account_Sign
+	  ,C.plcat as GL_Category
+      ,D.[acctid]
+      ,D.[amount] as Recorded_Amount
+	  ,CASE
+			When D.debcred = 'C' then D.amount * -1
+			When D.debcred = 'D' then D.amount
+	   END as Ledger_Debit_Credit
+      ,CASE     
+            When D.debcred = 'C' and C.debcred = 'C' then D.amount
+			When D.debcred = 'C' and C.debcred = 'D' then D.amount * -1
+			When D.debcred = 'D' and C.debcred = 'D' then D.amount
+			When D.debcred = 'D' and C.debcred = 'C' then D.amount * -1
+            Else D.amount
+       END as Normalized_Amount
+      ,D.[ReconYN]
+      ,D.[Quantity]
+      ,D.[Comment]
+      ,D.[Deposited]
+      ,D.[GrainCode]
+      ,A.AttributeValue
+  FROM [AVDATA].[dbo].[Jentry] as H
+      inner join  [AVDATA].[dbo].[JentryDt] as D
+            on H.jenum = D.jenum
+	  inner join  [AVDATA].[dbo].[AcctProf] as C
+			on C.id = D.acctid
+      inner join  [AVDATA].[dbo].[AcctAttributes] as A
+            on D.acctid = A.AcctID
+            And A.[MasterCrossRefNamesKey] = 3
+	  left outer join  [AVDATA].[dbo].[Users] as U
+			on U.userid = H.username
+	  left outer join  [AVDATA].[dbo].[GlSplits] as S
+			on H.splitid= S.Id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Compile GL Details\GL Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SGS.Agvance.SimplotETL]"
+                  connectionManagerRefId="Package.ConnectionManagers[SGS.Agvance.SimplotETL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Header_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Header_ID]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Header_ID]"
+                      name="Header_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Header_JENum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Header_JENum]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Header_JENum]"
+                      name="Header_JENum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                      length="1"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[type]"
+                      name="type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[reference]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[reference]"
+                      length="25"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[reference]"
+                      name="reference"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[custid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[custid]"
+                      length="6"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[custid]"
+                      name="custid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[payid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[payid]"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[payid]"
+                      name="payid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[source]"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[source]"
+                      name="source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[username]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[username]"
+                      length="20"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[username]"
+                      name="username"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[WindowsLoginID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[WindowsLoginID]"
+                      length="50"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[WindowsLoginID]"
+                      name="WindowsLoginID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[description]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[splitid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[splitid]"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[splitid]"
+                      name="splitid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Split_Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Split_Description]"
+                      length="50"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Split_Description]"
+                      name="Split_Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[totamt]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[totamt]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[totamt]"
+                      name="totamt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[numdebs]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[numdebs]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[numdebs]"
+                      name="numdebs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[numcreds]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[numcreds]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[numcreds]"
+                      name="numcreds"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[FiscalMonth]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[FiscalMonth]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[FiscalMonth]"
+                      name="FiscalMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[1099AmtPaid]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[1099AmtPaid]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[1099AmtPaid]"
+                      name="1099AmtPaid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[TranDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[TranDate]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[TranDate]"
+                      name="TranDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[TranTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[TranTime]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[TranTime]"
+                      name="TranTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReverseByJENum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[ReverseByJENum]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReverseByJENum]"
+                      name="ReverseByJENum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReversalOfJENum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[ReversalOfJENum]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReversalOfJENum]"
+                      name="ReversalOfJENum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[postcur]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[postcur]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[postcur]"
+                      name="postcur"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Detail_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Detail_ID]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Detail_ID]"
+                      name="Detail_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[lineitem]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[lineitem]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[lineitem]"
+                      name="lineitem"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GL_Action]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[GL_Action]"
+                      length="1"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GL_Action]"
+                      name="GL_Action"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Normal_Account_Sign]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Normal_Account_Sign]"
+                      length="1"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Normal_Account_Sign]"
+                      name="Normal_Account_Sign"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GL_Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[GL_Category]"
+                      length="20"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GL_Category]"
+                      name="GL_Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[acctid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[acctid]"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[acctid]"
+                      name="acctid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Recorded_Amount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Recorded_Amount]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Recorded_Amount]"
+                      name="Recorded_Amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Ledger_Debit_Credit]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Ledger_Debit_Credit]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Ledger_Debit_Credit]"
+                      name="Ledger_Debit_Credit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Normalized_Amount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Normalized_Amount]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Normalized_Amount]"
+                      name="Normalized_Amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReconYN]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[ReconYN]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[ReconYN]"
+                      name="ReconYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Comment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Comment]"
+                      length="40"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Comment]"
+                      name="Comment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Deposited]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Deposited]"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[Deposited]"
+                      name="Deposited"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GrainCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[GrainCode]"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[GrainCode]"
+                      name="GrainCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[AttributeValue]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[AttributeValue]"
+                      length="60"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].Columns[AttributeValue]"
+                      name="AttributeValue"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Header_ID]"
+                      dataType="i4"
+                      name="Header_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Header_JENum]"
+                      dataType="i4"
+                      name="Header_JENum" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      dataType="dbTimeStamp"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="1"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[reference]"
+                      dataType="wstr"
+                      length="25"
+                      name="reference" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[custid]"
+                      dataType="wstr"
+                      length="6"
+                      name="custid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[payid]"
+                      dataType="wstr"
+                      length="10"
+                      name="payid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[source]"
+                      dataType="wstr"
+                      length="10"
+                      name="source" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[username]"
+                      dataType="wstr"
+                      length="20"
+                      name="username" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[WindowsLoginID]"
+                      dataType="wstr"
+                      length="50"
+                      name="WindowsLoginID" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[splitid]"
+                      dataType="wstr"
+                      length="10"
+                      name="splitid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Split_Description]"
+                      dataType="wstr"
+                      length="50"
+                      name="Split_Description" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[totamt]"
+                      dataType="r8"
+                      name="totamt" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[numdebs]"
+                      dataType="i2"
+                      name="numdebs" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[numcreds]"
+                      dataType="i2"
+                      name="numcreds" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[FiscalMonth]"
+                      dataType="i2"
+                      name="FiscalMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[1099AmtPaid]"
+                      dataType="r8"
+                      name="1099AmtPaid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[TranDate]"
+                      dataType="dbTimeStamp"
+                      name="TranDate" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[TranTime]"
+                      dataType="dbTimeStamp"
+                      name="TranTime" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[ReverseByJENum]"
+                      dataType="i4"
+                      name="ReverseByJENum" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[ReversalOfJENum]"
+                      dataType="i4"
+                      name="ReversalOfJENum" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[postcur]"
+                      dataType="bool"
+                      name="postcur" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Detail_ID]"
+                      dataType="i4"
+                      name="Detail_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[lineitem]"
+                      dataType="i2"
+                      name="lineitem" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[GL_Action]"
+                      dataType="wstr"
+                      length="1"
+                      name="GL_Action" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Normal_Account_Sign]"
+                      dataType="wstr"
+                      length="1"
+                      name="Normal_Account_Sign" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[GL_Category]"
+                      dataType="wstr"
+                      length="20"
+                      name="GL_Category" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[acctid]"
+                      dataType="wstr"
+                      length="10"
+                      name="acctid" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Recorded_Amount]"
+                      dataType="r8"
+                      name="Recorded_Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Ledger_Debit_Credit]"
+                      dataType="r8"
+                      name="Ledger_Debit_Credit" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Normalized_Amount]"
+                      dataType="r8"
+                      name="Normalized_Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[ReconYN]"
+                      dataType="bool"
+                      name="ReconYN" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Comment]"
+                      dataType="wstr"
+                      length="40"
+                      name="Comment" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[Deposited]"
+                      dataType="bool"
+                      name="Deposited" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[GrainCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="GrainCode" />
+                    <externalMetadataColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output].ExternalColumns[AttributeValue]"
+                      dataType="wstr"
+                      length="60"
+                      name="AttributeValue" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Header_ID]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Header_ID]"
+                      name="Header_ID" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Header_JENum]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Header_JENum]"
+                      name="Header_JENum" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[type]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[reference]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[reference]"
+                      name="reference" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[custid]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[custid]"
+                      name="custid" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[payid]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[payid]"
+                      name="payid" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[source]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[source]"
+                      name="source" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[username]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[username]"
+                      name="username" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[WindowsLoginID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[WindowsLoginID]"
+                      name="WindowsLoginID" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[description]"
+                      dataType="nText"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[splitid]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[splitid]"
+                      name="splitid" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Split_Description]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Split_Description]"
+                      name="Split_Description" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[totamt]"
+                      dataType="r8"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[totamt]"
+                      name="totamt" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[numdebs]"
+                      dataType="i2"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[numdebs]"
+                      name="numdebs" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[numcreds]"
+                      dataType="i2"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[numcreds]"
+                      name="numcreds" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[FiscalMonth]"
+                      dataType="i2"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[FiscalMonth]"
+                      name="FiscalMonth" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[1099AmtPaid]"
+                      dataType="r8"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[1099AmtPaid]"
+                      name="1099AmtPaid" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[TranDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[TranDate]"
+                      name="TranDate" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[TranTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[TranTime]"
+                      name="TranTime" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ReverseByJENum]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ReverseByJENum]"
+                      name="ReverseByJENum" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ReversalOfJENum]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ReversalOfJENum]"
+                      name="ReversalOfJENum" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[postcur]"
+                      dataType="bool"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[postcur]"
+                      name="postcur" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Detail_ID]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Detail_ID]"
+                      name="Detail_ID" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[lineitem]"
+                      dataType="i2"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[lineitem]"
+                      name="lineitem" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[GL_Action]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[GL_Action]"
+                      name="GL_Action" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Normal_Account_Sign]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Normal_Account_Sign]"
+                      name="Normal_Account_Sign" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[GL_Category]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[GL_Category]"
+                      name="GL_Category" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[acctid]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[acctid]"
+                      name="acctid" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Recorded_Amount]"
+                      dataType="r8"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Recorded_Amount]"
+                      name="Recorded_Amount" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Ledger_Debit_Credit]"
+                      dataType="r8"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Ledger_Debit_Credit]"
+                      name="Ledger_Debit_Credit" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Normalized_Amount]"
+                      dataType="r8"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Normalized_Amount]"
+                      name="Normalized_Amount" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ReconYN]"
+                      dataType="bool"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ReconYN]"
+                      name="ReconYN" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="r8"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Comment]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Comment]"
+                      name="Comment" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Deposited]"
+                      dataType="bool"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[Deposited]"
+                      name="Deposited" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[GrainCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[GrainCode]"
+                      name="GrainCode" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[AttributeValue]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[AttributeValue]"
+                      name="AttributeValue" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Compile GL Details.Paths[OLE DB Source Output]"
+              endId="Package\Compile GL Details\c_Agvance_GL_Detail.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Compile GL Details\GL Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate staging table"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DTSID="{FA691C72-3816-4CFF-B012-C60627D5FD09}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate staging table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; ?? 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">13,7,OnError,19,OnExecStatusChanged,13,OnInformation,13,OnPostExecute,14,OnPostValidate,12,OnPreExecute,13,OnPreValidate,10,OnProgress,13,OnQueryCancel,12,OnTaskFailed,22,OnVariableValueChanged,9,OnWarning,24,ExecuteSQLExecutingQuery</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{F6CB9FFE-ADEA-4F4B-A2A9-477EBB33BCE3}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{69F994DA-392E-4A1B-AA8C-7355A488866C}"
+          SQLTask:SqlStatementSource="Truncate table c_Agvance_GL_Detail&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{1835826D-1BC6-4761-A9C0-AE13F87A9ED3\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{93AFB9C1-292E-40A7-AE61-1BE3B2A95EE5}"
+      DTS:From="Package\Truncate staging table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{93AFB9C1-292E-40A7-AE61-1BE3B2A95EE5}"
+      DTS:To="Package\Compile GL Details" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Compile GL Details"
+          TopLeft="11.5,87.1603773584906" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Truncate staging table"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{1835826D-1BC6-4761-A9C0-AE13F87A9ED3\}]"
+          TopLeft="97,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.6603773584906"
+              Start="0,0"
+              End="0,32.1603773584906">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.1603773584906" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Compile GL Details">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124,42"
+          Id="Package\Compile GL Details\GL Query"
+          TopLeft="136,50" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Compile GL Details\c_Agvance_GL_Detail"
+          TopLeft="99,172" />
+        <EdgeLayout
+          Id="Package\Compile GL Details.Paths[OLE DB Source Output]"
+          TopLeft="197.5,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Compile GL Details\c_Agvance_GL_Detail">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Compile GL Details\GL Query">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

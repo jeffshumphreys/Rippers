@@ -1,0 +1,38 @@
+{
+  "FileVersion": 2,
+  "Id": "535e5dd6-a119-4052-b637-b305cf97e222",
+  "Items": [
+    {
+      "Id": "5e998e7c-0c6c-451c-bb89-552193969225",
+      "Command": "--packagepaths \"C:\\Users\\jeff.humphreys\\source\\repos\\Tesk Tasks Load\\Tesk Tasks Load\\Source to Dest simple with keep Identity all cols.dtsx\""
+    },
+    {
+      "Id": "81323e2b-e1d4-4656-a03b-744b8916e88e",
+      "Command": "--packagepaths \\Examples"
+    },
+    {
+      "Id": "dcc076ce-06bb-4725-bd4d-51ad5b53c713",
+      "Command": "--packagepaths TestCase_00002.RealNoConn.Load_GL_Detail.dtsx --savetofile \"%USERPROFILE%\\{{PACKAGENAMENOEXTENSION}}.{{DATETIME}}.Results.txt\""
+    },
+    {
+      "Id": "4c53f931-e1f6-43d6-bbd0-a3bfc56dc0b4",
+      "Command": "--packagepaths TestCase_00003.RealBiggest.Cengea_DW_Archive_Data_Load.dtsx"
+    },
+    {
+      "Id": "7baa0fe1-0f8e-466e-8e76-f258354f988f",
+      "Command": "--packagepaths TestCase_00001.ExecSQL_TRUNCATE"
+    },
+    {
+      "Id": "ea21351a-7cff-4b6f-abc4-def8bc6374f6",
+      "Command": "--batchmode"
+    },
+    {
+      "Id": "86aa2d77-ddcd-44e6-a693-6f62ee38d958",
+      "Command": "--skipoldstuff"
+    },
+    {
+      "Id": "490e326d-ba19-448e-b743-710b818439b4",
+      "Command": "--wraplinesonscreen"
+    }
+  ]
+}
