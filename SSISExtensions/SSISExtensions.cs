@@ -124,7 +124,7 @@ namespace SSISExtensions
             int? createdrowkey = logger.RecordTestResultsToDb(
                         PathToTestPackage:            PathPortion
                       , PackageName:                  FilePortion
-                      , VSVersion:                    packageExplodedDetails.ApplicationVersion
+                      , AppVersion:                   packageExplodedDetails.ApplicationVersion
                       , PackageSize:                  packageExplodedDetails.PackageSizeBeforeLoad
                       , DateTimeStartedLoadFromXML:   DateTime.Now
                       , PackageFormatVersion:         PackageFormatVersion
