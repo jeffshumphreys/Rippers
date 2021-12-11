@@ -108,7 +108,7 @@
     <Compile Include="HsbColor.cs" />
     <Compile Include="HslColor.cs" />
     <Compile Include="PathExtensions.cs" />
-    <Compile Include="Process Extensions.cs" />
+    <Compile Include="ProcessExtensions.cs" />
     <Compile Include="RgbColor.cs" />
     <Compile Include="SharedConstants.cs" />
     <Compile Include="MiscExtensions.cs" />

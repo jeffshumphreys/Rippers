@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.IO;
-using System.Text;
-using System.Net;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
 using System.Linq;
 
 // SSIS
@@ -97,7 +91,8 @@ namespace RipSSIS
                         
                         foreach (Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSInput100 input in componentMetaDataInputCollection)
                         {
-                            IDTSCustomPropertyCollection100         customPropertyCollection         = input.CustomPropertyCollection;
+                            IDTSCustomPropertyCollection100 customPropertyCollection = input.CustomPropertyCollection;
+
                             foreach (IDTSCustomProperty100 customProperty in customPropertyCollection)
                             {
                                 Print($"Custom Property: {customProperty.Name}");

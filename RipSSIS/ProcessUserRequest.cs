@@ -212,6 +212,11 @@ namespace RipSSIS
 
             Assert.NotNull(package);
 
+            // Grab all the interesting properties, and only if they have non-default or non-empty or non-null properties, and (for now) print them out.
+
+            var masterExpressedProperties = new ExpressAllInterestingPropsOfClass(package);
+            masterExpressedProperties.ListOut();
+
             if (package.Configurations.Count > 0)
             {
                 Print("Package Configurations");

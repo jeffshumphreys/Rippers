@@ -49,11 +49,16 @@ namespace PackageExpansions
                     return;
                 }
 
+                // Now expand out our possibly macrotized strings
+
                 saveResultsToFile = value.Replace("{{PACKAGENAMENOEXTENSION}}", PackageFileNameNoExtension);
 
                 saveResultsToFile = saveResultsToFile.Replace("{{DATETIME}}", DateTime.Now.ToString("yyyyMMddhhmmssFFF"));  
                 string userProfile = Environment.GetEnvironmentVariable("USERPROFILE");
                 saveResultsToFile = saveResultsToFile.Replace("%USERPROFILE%", userProfile +"\\");
+
+                // Can have too many backslashes
+
                 saveResultsToFile = saveResultsToFile.Replace("\\\\", "\\");
 
                 if (saveResultsToFile.Contains("{{"))
@@ -62,6 +67,5 @@ namespace PackageExpansions
                 }
             }
         }
-
     }
 }

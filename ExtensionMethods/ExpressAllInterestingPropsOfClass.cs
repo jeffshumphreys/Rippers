@@ -33,7 +33,7 @@ namespace ExtensionMethods
             if (prefix == null) prefix = obToDecompose.ToString() ?? "{nameundefined}";
         }
 
-            PropertyInfo[] propertyInfos; // Search up the hierarchy
+        PropertyInfo[] propertyInfos; // Search up the hierarchy
         public ExpressAllInterestingPropsOfClass Decompose()
         {
             propertyInfos = ObToDecompose.GetType().GetProperties(

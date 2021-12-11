@@ -263,6 +263,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="RipSSIS.args.json" />
+    <None Include="RipSSISTestResults.bacpac" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtensionMethods\ExtensionMethods.csproj">
