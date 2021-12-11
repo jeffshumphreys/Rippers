@@ -24,7 +24,7 @@ namespace SQLExtensions
                 connection.ConnectionString = $"Server=.;Database={DatabaseForTestResults};Trusted_Connection=true;";
                 connection.Open();
 
-                AddNewTestResultCommand = new SqlCommand("AddTestParsePackageResult", connection);
+                AddNewTestResultCommand = new SqlCommand("Capture.AddTestParsePackageResult", connection);
                 AddNewTestResultCommand.CommandType = CommandType.StoredProcedure;
                 SqlParameter returnnewRowKey = 
                 AddNewTestResultCommand.Parameters.Add("ReturnValue",                       SqlDbType.Int); returnnewRowKey.Direction = ParameterDirection.ReturnValue;
