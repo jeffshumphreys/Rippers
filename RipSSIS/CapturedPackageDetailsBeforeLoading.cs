@@ -1,8 +1,8 @@
 ﻿using System;
 
-using static ExtensionMethods.SharedConstants;
+using static RipSSIS.SharedConstants;
 
-namespace PackageExpansions
+namespace RipSSIS
 {
     public class CapturedPackageDetailsBeforeLoading
     {
@@ -12,6 +12,6 @@ namespace PackageExpansions
         public DateTime         originalLastWritten;
         public DateTime         created;
         public long             originalFileSize;
-        public byte[]           originalFileMD5Hash;  // Capture algorithm so that we don't accidentally compare different algorithm values in future.
+        public byte[]           originalFileMD5Hash;  // Capture algorithm used in name so that we don't accidentally compare different algorithm values in future.
     }
 }

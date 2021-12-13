@@ -10,7 +10,7 @@ using CommandLine;
  */
 namespace RipSSIS
 {
-    public class CmdLnArgsAsProps : ICommand
+    public class CommandLineArgumentsAsProperties : ICommand
     {
         [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }

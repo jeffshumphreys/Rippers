@@ -110,7 +110,6 @@
     <Compile Include="PathExtensions.cs" />
     <Compile Include="ProcessExtensions.cs" />
     <Compile Include="RgbColor.cs" />
-    <Compile Include="SharedConstants.cs" />
     <Compile Include="MiscExtensions.cs" />
     <Compile Include="SMOExtensions.cs" />
     <Compile Include="StringExtensions.cs" />

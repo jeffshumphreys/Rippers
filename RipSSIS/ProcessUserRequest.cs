@@ -8,14 +8,12 @@ using ExtensionMethods;
 
 using Microsoft.SqlServer.Dts.Runtime;
 
-using PackageExpansions;
-
-using SSISExtensions;
+using RipSSIS;
 
 using Xunit;
 
 using static ExtensionMethods.UtilityFunctions;
-using static ExtensionMethods.SharedConstants;
+using static RipSSIS.SharedConstants;
 using static ExtensionMethods.CollectionExtensions;
 using static ExtensionMethods.MiscExtensions;
 using static ExtensionMethods.SMOExtensions;
@@ -41,7 +39,7 @@ namespace RipSSIS
         /// Process either command line arguments or simulated arguments from RipSSISTests package.
         /// </summary>
         /// <param name="cliArguments">Interpreted command line arguments into a class</param>
-        public ProcessUserRequest(CmdLnArgsAsProps cliArguments, string[] commandLineArgs)
+        public ProcessUserRequest(CommandLineArgumentsAsProperties cliArguments, string[] commandLineArgs)
         {
             string divinedBasePathFromMachine;
             int sessionID = Environment.CurrentManagedThreadId;
@@ -172,7 +170,7 @@ namespace RipSSIS
 
             foreach (var expandedFilePathDetail in expandedFilePaths)
             {
-                // Start building up all our attributes into one class instance.
+                // Start building up all our attributes into one class instance. I don't want to send the cliArguments, keep that loosely coupled.
 
                 PackageExplodedDetails                   packageExplodedDetails = new PackageExplodedDetails(expandedFilePathDetail);
                 

@@ -29,7 +29,7 @@ namespace RipSSIS.Tests
         {
             var commandlineargs = string.Join(" ", args);
             Debug.WriteLine(commandlineargs);
-            int rtnval = new CLP_MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
+            int rtnval = new MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
             Assert.True(rtnval == 1, "Correctly returned failure code when no path given.");
         }
 
@@ -40,7 +40,7 @@ namespace RipSSIS.Tests
             var commandlineargs = string.Join(" ", args);
             Debug.WriteLine(commandlineargs);
             int rtnval = -1;
-            Action act = () => rtnval = new CLP_MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
+            Action act = () => rtnval = new MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
 
             Exception exception = Assert.Throws<Exception>(act);
             //Assert.Equal("Package not found: " + fullPathToPackage", exception.Message)
@@ -54,7 +54,7 @@ namespace RipSSIS.Tests
             args.AddRange(new[] { ARG_PACKAGEPATHS, packagepath });
             var commandlineargs = string.Join(" ", args);
             Debug.WriteLine(commandlineargs);
-            int rtnval = new CLP_MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
+            int rtnval = new MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
             Assert.True(rtnval == 0, "Correctly processed the test package that is a known good package.");
         }
 
@@ -67,7 +67,7 @@ namespace RipSSIS.Tests
             args.AddRange(new[] { ARG_FULLYDETACHFIRST, TRUE });
             var commandlineargs = string.Join(" ", args);
             Debug.WriteLine(commandlineargs);
-            int rtnval = new CLP_MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
+            int rtnval = new MainArgumentDirector().DirectToProcessAccordingToArguments(args.ToArray());
             Assert.True(rtnval == 0, "Correctly opened SSIS as XML, injected flags, and saved back out to new name.");
         }
         // Verify output is generated.

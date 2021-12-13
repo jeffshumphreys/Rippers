@@ -8,7 +8,7 @@ using static ExtensionMethods.UtilityFunctions;
 
 namespace RipSSIS
 {
-    public class CLP_MainArgumentDirector : IMainArgumentDirector
+    public class MainArgumentDirector : IMainArgumentDirector
     {
         static int returncode = -1; // -1 to indicate Not set.
         /// <summary>
@@ -25,9 +25,9 @@ namespace RipSSIS
 
             var assembliesLoadedBeforeSSIS = AppDomain.CurrentDomain.GetAssemblies();
 
-            var res = Parser.Default.ParseArguments<CmdLnArgsAsProps>(args)
-                .WithParsed<CmdLnArgsAsProps>(t => t.Execute(args))
-                .WithNotParsed<CmdLnArgsAsProps>(err => HandleParseError(err));
+            var res = Parser.Default.ParseArguments<CommandLineArgumentsAsProperties>(args)
+                .WithParsed<CommandLineArgumentsAsProperties>(t => t.Execute(args))
+                .WithNotParsed<CommandLineArgumentsAsProperties>(err => HandleParseError(err));
 
             return returncode;
         }

@@ -4,7 +4,7 @@ using System.IO;
 using System;
 using ExtensionMethods;
 
-namespace PackageExpansions
+namespace RipSSIS
 {
     /// <summary>
     /// Consolidate package details from multiple sources into a data packet aka bean to carry data around

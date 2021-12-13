@@ -52,7 +52,7 @@ namespace RipSSIS
             SetWindowPosition(-1500,  200, 1200, 700);
             Console.Title = "Console output for " + Application.ProductName;
 
-            return new CLP_MainArgumentDirector().DirectToProcessAccordingToArguments(args);
+            return new MainArgumentDirector().DirectToProcessAccordingToArguments(args);
         }
 
         public static void SetWindowPosition(int x, int y, int width, int height)

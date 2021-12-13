@@ -222,8 +222,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Keyscripttoadd.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SSISExtensions.cs" />
+    <None Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

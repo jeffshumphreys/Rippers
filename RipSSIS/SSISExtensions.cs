@@ -3,10 +3,9 @@ using System.IO;
 using System.Xml;
 using ExtensionMethods;
 using Microsoft.SqlServer.Dts.Runtime; // Dependent on C:\Program Files (x86)\Microsoft SQL Server\150\SDK\Assemblies\Microsoft.SQLServer.ManagedDTS.dll
-using PackageExpansions;
 using SQLExtensions;
 
-namespace SSISExtensions
+namespace RipSSIS
 {
     public static class SSISExtensions
     {

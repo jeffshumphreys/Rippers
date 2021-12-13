@@ -11,10 +11,9 @@ using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 using Microsoft.SqlServer.Dac.Model;
 
-using SSISExtensions;
-using PackageExpansions;
+using RipSSIS;
 using ExtensionMethods;
-using static ExtensionMethods.SharedConstants;
+using static RipSSIS.SharedConstants;
 using static ExtensionMethods.UtilityFunctions;
 using Microsoft.SqlServer.Dts.Tasks.WebServiceTask;
 
