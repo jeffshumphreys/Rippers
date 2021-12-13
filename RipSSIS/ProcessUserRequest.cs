@@ -146,7 +146,7 @@ namespace RipSSIS
 
                         capturedPackageDetailsBeforeLoading.expandedPath = fullPathToPackageFile;
 
-                        // Snapshot file details.
+                        // Snapshot file details. These can be useful in determining changes to the source file in a long batch run, which could cause some concern.
 
                         FileInfo                                                fileInfo          = new FileInfo(fullPathToPackageFile);
                         capturedPackageDetailsBeforeLoading.originalFileSize                      = fileInfo.Length;
