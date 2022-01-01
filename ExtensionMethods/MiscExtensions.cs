@@ -279,6 +279,24 @@ namespace ExtensionMethods
             return false;
         }
 
+        /// <summary>
+        /// Get tired of printing "1 sets" or "1 set(s)".  Looks sad.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="term"></param>
+        /// <returns></returns>
+
+        public static string Pluralize(this int i, string singularterm, string pluralterm = null, string singularprefix = null, string pluralprefix = null)
+        {
+            string phrase = i.ToString() + " ";
+            if (singularterm != null && pluralterm == null) pluralterm = singularterm + "s";
+            if (singularprefix == null) singularprefix = "";
+            if (pluralprefix == null) pluralprefix = singularprefix;
+
+            phrase = i != 1 ? $"{pluralprefix} {phrase} {pluralterm}" : $"{singularprefix} {phrase} {singularterm}";
+            return phrase;
+        }
+
         ///// <summary>
         ///// The between.
         ///// </summary>
@@ -825,6 +843,7 @@ namespace ExtensionMethods
             return ((T)reader[index]);
         }
     }
+
     //public static class ExtendInt
     //{
     //    /// <summary>
