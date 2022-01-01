@@ -4,7 +4,7 @@
   "Items": [
     {
       "Id": "5e998e7c-0c6c-451c-bb89-552193969225",
-      "Command": "--packagepaths \"C:\\Users\\jeffs\\source\\repos\\Rippers-TestSSISPackages\\Test00001-AdventureWorks2019\\Address-Test00001-DataFlwOLEDBKeepIdentity.dtsx\""
+      "Command": "--packagepaths \"C:\\repos\\Rippers-TestSSISPackages\\0001-BasicTests\\0001-Test-DtaFlw-AdvWks2019-KeepIdent.dtsx\""
     },
     {
       "Id": "81323e2b-e1d4-4656-a03b-744b8916e88e",
