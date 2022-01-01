@@ -41,6 +41,7 @@ namespace RipSSIS
         /// <param name="cliArguments">Interpreted command line arguments into a class</param>
         public ProcessUserRequest(CommandLineArgumentsAsProperties cliArguments, string[] commandLineArgs)
         {
+            PrintToScreen(true);
             string divinedBasePathFromMachine;
             int sessionID = Environment.CurrentManagedThreadId;
 
@@ -167,6 +168,12 @@ namespace RipSSIS
             {
                 throw new Exception("Duplicated paths in input set after expanding, which could cause errors.");
             }
+            else
+            {
+                Print("No duplicate paths found in input set after expanding.");
+            }
+
+            Print($"There {expandedFilePaths.Count.Pluralize("SSIS package", null, "is", "are")} to rip apart.");
 
             foreach (var expandedFilePathDetail in expandedFilePaths)
             {
